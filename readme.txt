@@ -9,7 +9,7 @@ Requires at least: 6.6
 Requires PHP: 7.4
 Stable tag: 1.5.1
 Tags: monitor, monitoring, api
-Tested up to: 6.8
+Tested up to: 7.1
 
 A bridge between your WordPress site’s internals and your monitoring tools.
 
