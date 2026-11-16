@@ -42,12 +42,15 @@ function relay_get_current_wp_version(): ?string {
  * Get the site health and turn it into a rating.
  *
  * @since 1.0.0
+ * @since 1.6.0 Returns null instead of 0 when the rating is unknown.
+ *
+ * @return int|null Rating from 1 to 5, or null when unknown.
  */
-function relay_get_site_health_rating(): int {
+function relay_get_site_health_rating(): ?int {
 	$summary = get_transient( 'health-check-site-status-result' );
 
 	if ( false === $summary ) {
-		return 0;
+		return null;
 	}
 
 	$summary = json_decode( $summary, true );
@@ -60,14 +63,14 @@ function relay_get_site_health_rating(): int {
 		$total = $good + $recommended + $critical;
 
 		if ( 0 === $total ) {
-			return 0;
+			return null;
 		}
 
 		$rating = ( 5 * $good + 3 * $recommended + 1 * $critical ) / $total;
 		return (int) round( $rating );
 	}
 
-	return 0;
+	return null;
 }
 
 /**
