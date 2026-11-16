@@ -13,6 +13,7 @@
  * Text Domain: relay
  * Domain Path: /languages
  * Requires at least: 6.6
+ * Requires PHP: 7.4
  * Network: true
  */
 
