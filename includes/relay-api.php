@@ -28,7 +28,7 @@ function relay_permission_check() {
 		? sanitize_text_field( wp_unslash( $_SERVER['HTTP_X_RELAY_API_KEY'] ) )
 		: '';
 
-	if ( empty( $api_key ) || $header_key !== $api_key ) {
+	if ( ! is_string( $api_key ) || '' === $api_key || ! hash_equals( $api_key, $header_key ) ) {
 		return new \WP_Error( 'rest_forbidden', esc_html__( 'Invalid API key.', 'relay' ), array( 'status' => 401 ) );
 	}
 
