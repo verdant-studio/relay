@@ -16,8 +16,8 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @since 1.0.0
  */
-function relay_get_site_name(): ?string {
-	return get_bloginfo( 'name' ) ?? __( 'N/A', 'relay' );
+function relay_get_site_name(): string {
+	return get_bloginfo( 'name' );
 }
 
 /**
@@ -25,8 +25,8 @@ function relay_get_site_name(): ?string {
  *
  * @since 1.0.0
  */
-function relay_get_site_url(): ?string {
-	return get_bloginfo( 'url' ) ?? __( 'N/A', 'relay' );
+function relay_get_site_url(): string {
+	return get_bloginfo( 'url' );
 }
 
 /**
@@ -34,8 +34,8 @@ function relay_get_site_url(): ?string {
  *
  * @since 1.0.0
  */
-function relay_get_current_wp_version(): ?string {
-	return get_bloginfo( 'version' ) ?? __( 'N/A', 'relay' );
+function relay_get_current_wp_version(): string {
+	return get_bloginfo( 'version' );
 }
 
 /**
