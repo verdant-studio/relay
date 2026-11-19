@@ -37,10 +37,10 @@ define( 'RELAY_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
  * @since 1.4.0
  */
 if ( defined( 'WP_CLI' ) && WP_CLI ) {
-	require_once RELAY_PLUGIN_PATH . '/includes/relay-cli.php';
+	require_once RELAY_PLUGIN_PATH . 'includes/relay-cli.php';
 
 	WP_CLI::add_command( 'relay', 'Relay_CLI_Command' );
 }
 
-require_once RELAY_PLUGIN_PATH . '/includes/relay-settings.php';
-require_once RELAY_PLUGIN_PATH . '/includes/relay-api.php';
+require_once RELAY_PLUGIN_PATH . 'includes/relay-settings.php';
+require_once RELAY_PLUGIN_PATH . 'includes/relay-api.php';

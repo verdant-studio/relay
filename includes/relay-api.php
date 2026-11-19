@@ -37,7 +37,7 @@ function relay_permission_check() {
 
 function relay_rest_core(): WP_REST_Response
 {
-	require_once RELAY_PLUGIN_PATH . '/includes/relay-data.php';
+	require_once RELAY_PLUGIN_PATH . 'includes/relay-data.php';
 
 	$data = array(
 		'site_name'         => relay_get_site_name(),
