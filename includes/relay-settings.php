@@ -140,6 +140,10 @@ if ( is_multisite() ) {
  * @since 1.3.1
  */
 function relay_save_network_settings(): void {
+	if ( ! current_user_can( 'manage_network_options' ) ) {
+		wp_die( esc_html__( 'Sorry, you are not allowed to manage these settings.', 'relay' ), 403 );
+	}
+
 	check_admin_referer( 'relay_settings-options' );
 
 	$key = isset( $_POST['relay_api_key'] ) ? sanitize_text_field( wp_unslash( $_POST['relay_api_key'] ) ) : '';
