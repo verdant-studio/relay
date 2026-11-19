@@ -51,16 +51,20 @@ function relay_rest_core(): WP_REST_Response
 	if ( is_multisite() ) {
 		$data['multisite'] = true;
 
-		$subsites         = get_sites();
+		// 'number' => 0 removes the default limit of 100 sites.
+		$subsites = get_sites(
+			array(
+				'number'       => 0,
+				'network_id'   => get_current_network_id(),
+				'site__not_in' => array( get_main_site_id() ),
+			)
+		);
+
 		$data['subsites'] = array();
 
 		foreach ( $subsites as $subsite ) {
-			if ( get_main_site_id() === (int) $subsite->blog_id ) {
-				continue;
-			}
-
 			$data['subsites'][] = array(
-				'site_id'   => $subsite->blog_id,
+				'site_id'   => (int) $subsite->blog_id,
 				'site_url'  => get_site_url( $subsite->blog_id ),
 				'site_name' => get_blog_option( $subsite->blog_id, 'blogname' ),
 			);
